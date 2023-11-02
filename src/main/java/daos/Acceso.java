@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
 
 @Entity //Es una Entidad
 @Table(name="accesos", schema="gbp_operacional") // Crea la tabla
-public class Acceso implements InterfaceCrud {
+public class Acceso {
 
 	//ATRIBUTOS
 	@Id // Indica que es un ID
@@ -43,31 +43,4 @@ public class Acceso implements InterfaceCrud {
 		this.codigo_acceso = codigo_acceso;
 		this.descripcion_acceso = descripcion_acceso;
 	}
-
-		// METODOS
-	@Override
-	public OpcionesEnum select(EntityManager em, OpcionesEnum clase) {
-
-	    Usuario usuario = em.find(Usuario.class, clase);
-		
-	    return usuario;
-	}
-
-	@Override
-	public boolean create(EntityManager em, OpcionesEnum clase) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean update(EntityManager em, OpcionesEnum clase) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean delete(EntityManager em, OpcionesEnum clase) {
-		// TODO Auto-generated method stub
-		return false;
-	}	
 }
