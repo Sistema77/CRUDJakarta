@@ -14,9 +14,9 @@ public class inicio {
 		
 		Acceso acceso = new Acceso();
 
-		acceso.select(em);
-		acceso.update(em, 1, "dasd", "sdasd");
-		
+		//acceso.delete(em, 1);
+		//acceso.select(em);
+		acceso.insert(em, "qewqqw", "ewqeq");
 		/*em.getTransaction().begin();
 		
 		em.persist(acceso);

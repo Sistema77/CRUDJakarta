@@ -61,7 +61,9 @@ public class Acceso {
 	}
 	
 	public static List<Acceso> selectAll(EntityManager em) {
-		 // Creao un metodo para Hacer un SELECT *
+		 // Creao un metodo para Hacer un SELECT ALL que complementa a el metodo Select
+		// (He decidido hacerlo asi por si en un futuro se quiere hacer un select de un elemento que solo se sobrecarge el select 
+		// y tener asi una mejor escalabilidad) 
 	     String jpql = "SELECT a FROM Acceso a";
 	     TypedQuery<Acceso> query = em.createQuery(jpql, Acceso.class);
 
@@ -87,11 +89,33 @@ public class Acceso {
         	System.out.print(false);
         }
 
-        // Finaliza la transacción
         tx.commit();
     }
 	
 
+	public void delete(EntityManager em, long id) {
+		 EntityTransaction tx = em.getTransaction();
+	        tx.begin();
+
+	        Acceso acceso = em.find(Acceso.class, id);
+
+	        if (acceso != null) {
+	        	em.remove(acceso);
+	        }else {
+	        	System.out.print("No se a encontrado el elemento");
+	        }
+
+	        tx.commit();
+	}
+	
+	public void insert(EntityManager em, String codigo_acceso, String descripcion_acceso) {
+		Acceso acceso = new Acceso(codigo_acceso, descripcion_acceso);
+		EntityTransaction tx = em.getTransaction();
+		
+		 tx.begin();
+         em.persist(acceso); 
+         tx.commit();
+	}
 							// Setter 
 	public void setCodigo_acceso(String codigo_acceso) {
 		this.codigo_acceso = codigo_acceso;
