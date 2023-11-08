@@ -12,12 +12,18 @@ public class inicio {
 		EntityManager em = emf.createEntityManager();
 		
 		
-		Acceso acceso = new Acceso("Usu","Acceso usuarios biblioteca");
-		crud.select(em, acceso);
+		Acceso acceso = new Acceso();
+
+		acceso.select(em);
+		acceso.update(em, 1, "dasd", "sdasd");
+		
 		/*em.getTransaction().begin();
 		
 		em.persist(acceso);
 		em.getTransaction().commit();*/
-		em.close();
+		
+		if(em.isOpen()) {
+			em.close();
+		}
 	}
 }
