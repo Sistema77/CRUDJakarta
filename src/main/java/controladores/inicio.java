@@ -1,6 +1,6 @@
 package controladores;
 
-import daos.Acceso;
+import daos.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -11,16 +11,14 @@ public class inicio {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
 		EntityManager em = emf.createEntityManager();
 		
+		// TEST
 		
-		Acceso acceso = new Acceso();
-
-		//acceso.delete(em, 1);
-		//acceso.select(em);
-		acceso.insert(em, "qewqqw", "ewqeq");
-		/*em.getTransaction().begin();
-		
-		em.persist(acceso);
-		em.getTransaction().commit();*/
+		Usuario us = new Usuario();
+		us.insert(em, "q", null, null, null, null, null, false, null, null, null, null);
+		us.select(em);
+		us.update(em, 2, "w", null, null, null, null, null, false, null, null, null, null);
+		us.select(em);
+		us.delete(em, 1);
 		
 		if(em.isOpen()) {
 			em.close();
